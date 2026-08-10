@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stored Data Viewer — Error 404 Tech Rescue Agency</title>
+  <meta name="description" content="See exactly what this app has stored in your browser's local storage." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">404</span>
+        <span class="brand-name">ERROR <span>404</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book-repair.html">Book Repair</a></li>
+          <li><a href="status.html">Track Status</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark or light mode">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="book-repair.html" class="btn btn-primary">
+          <i class="fa-solid fa-bolt"></i> Book a Repair
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="dataViewerRoot">
+    <div class="container page-band">
+      <p class="eyebrow">Behind the scenes</p>
+      <h1>Where this app's data actually lives.</h1>
+      <p>This app doesn't have a server or a database — everything it saves is written to your browser's <strong>Local Storage</strong>, a small key/value store built into the browser itself.</p>
+    </div>
+
+    <section class="container">
+
+      <div class="info-callout">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <h4>What am I actually looking at?</h4>
+          <p>
+            Every ticket you submit on <strong>Book Repair</strong> gets written to <code>localStorage</code> under this site's origin.
+            It isn't a file you can open in Notepad or File Explorer — it lives inside the browser, tied to this device and this browser only.
+            The panels below read that storage directly and print it here, and you can also see the raw entries yourself in
+            <strong>DevTools → Application tab → Local Storage</strong> (Chrome/Edge) or <strong>DevTools → Storage tab</strong> (Firefox).
+          </p>
+        </div>
+      </div>
+
+      <div class="data-stack">
+
+                <article class="data-card">
+          <div class="data-card-header">
+            <h3><i class="fa-solid fa-moon"></i> Theme Preference <span class="key-name">key: error404-theme</span></h3>
+            <div class="data-card-actions">
+              <button class="btn btn-ghost btn-sm copy-data-btn" data-target="#dataThemeOut" type="button">
+                <i class="fa-solid fa-copy"></i> Copy
+              </button>
+              <span class="toast-msg"></span>
+            </div>
+          </div>
+          <pre class="data-pre" id="dataThemeOut"></pre>
+          <p class="data-empty-state" id="dataThemeEmpty">Nothing stored yet — toggle dark/light mode once to write this key.</p>
+        </article>
+
+                <article class="data-card">
+          <div class="data-card-header">
+            <h3><i class="fa-solid fa-file-lines"></i> Most Recent Ticket <span class="key-name">key: error404-latest-ticket</span></h3>
+            <div class="data-card-actions">
+              <button class="btn btn-ghost btn-sm copy-data-btn" data-target="#dataLatestOut" type="button">
+                <i class="fa-solid fa-copy"></i> Copy
+              </button>
+              <span class="toast-msg"></span>
+            </div>
+          </div>
+          <pre class="data-pre" id="dataLatestOut"></pre>
+          <p class="data-empty-state" id="dataLatestEmpty">Nothing stored yet — submit a repair on the Book Repair page to write this key.</p>
+        </article>
+
+                <article class="data-card">
+          <div class="data-card-header">
+            <h3><i class="fa-solid fa-database"></i> All Tickets Log <span class="key-name">key: error404-tickets</span></h3>
+            <div class="data-card-actions">
+              <button class="btn btn-ghost btn-sm copy-data-btn" data-target="#dataAllOut" type="button">
+                <i class="fa-solid fa-copy"></i> Copy
+              </button>
+              <span class="toast-msg"></span>
+            </div>
+          </div>
+          <pre class="data-pre" id="dataAllOut"></pre>
+          <p class="data-empty-state" id="dataAllEmpty">Nothing stored yet — every ticket you submit gets added to this log, keyed by ticket ID.</p>
+        </article>
+
+      </div>
+
+      <div class="danger-zone">
+        <div>
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> Clear all stored data</h4>
+          <p>Deletes every ticket and theme preference saved on this device. Useful for resetting before a demo. This cannot be undone.</p>
+        </div>
+        <div>
+          <button class="btn btn-danger" id="clearAllDataBtn" type="button">
+            <i class="fa-solid fa-trash"></i> Clear All Data
+          </button>
+          <span class="toast-msg" id="clearAllToast"></span>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Error 404 Tech Rescue Agency. All rights reserved.</span>
+        <span>Nothing here ever leaves your browser.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services & Live Pricing — Error 404 Tech Rescue Agency</title>
+  <meta name="description" content="Browse repair services and see a live cost estimate as you select what your device needs." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">404</span>
+        <span class="brand-name">ERROR <span>404</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="book-repair.html">Book Repair</a></li>
+          <li><a href="status.html">Track Status</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark or light mode">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="book-repair.html" class="btn btn-primary">
+          <i class="fa-solid fa-bolt"></i> Book a Repair
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-band">
+      <p class="eyebrow">Service catalogue</p>
+      <h1>Pick what's broken. Watch the price build.</h1>
+      <p>Tick every issue your device is having — the panel on the right prices it live, no calling in for a quote.</p>
+    </div>
+
+    <section class="container">
+      <div class="services-layout">
+
+                <div class="service-list">
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="screen-repair">
+              <span class="service-check-text">
+                <strong>Screen Repair</strong>
+                <span>Cracked glass, dead pixels, or unresponsive touch digitisers.</span>
+              </span>
+            </label>
+            <span class="service-price">£49</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="battery-swap">
+              <span class="service-check-text">
+                <strong>Battery Replacement</strong>
+                <span>Swollen, draining fast, or won't hold a charge past 20%.</span>
+              </span>
+            </label>
+            <span class="service-price">£39</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="data-recovery">
+              <span class="service-check-text">
+                <strong>Data Recovery</strong>
+                <span>Failed boot drives, corrupted partitions, accidental deletion.</span>
+              </span>
+            </label>
+            <span class="service-price">£89</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="malware-removal">
+              <span class="service-check-text">
+                <strong>Virus & Malware Removal</strong>
+                <span>Pop-ups, hijacked browsers, ransomware, or unexplained slowdowns.</span>
+              </span>
+            </label>
+            <span class="service-price">£59</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="liquid-damage">
+              <span class="service-check-text">
+                <strong>Liquid Damage Treatment</strong>
+                <span>Spills or drops in water — full teardown, clean, and corrosion check.</span>
+              </span>
+            </label>
+            <span class="service-price">£69</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="diagnostics">
+              <span class="service-check-text">
+                <strong>Software Diagnostics</strong>
+                <span>Not sure what's wrong? Full system health scan and report.</span>
+              </span>
+            </label>
+            <span class="service-price">£29</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="hardware-upgrade">
+              <span class="service-check-text">
+                <strong>Hardware Upgrade (RAM/SSD)</strong>
+                <span>Speed up an ageing machine with more memory or solid-state storage.</span>
+              </span>
+            </label>
+            <span class="service-price">£45</span>
+          </article>
+
+          <article class="service-row">
+            <label class="service-check">
+              <input type="checkbox" class="service-checkbox" value="emergency-sameday">
+              <span class="service-check-text">
+                <strong>Emergency Same-Day Service</strong>
+                <span>Jump the queue — priority intake and same-day return, any issue above.</span>
+              </span>
+            </label>
+            <span class="service-price">£99</span>
+          </article>
+
+        </div>
+
+                <aside class="estimator" aria-live="polite">
+          <div class="estimator-header">
+            <span>Live Estimate</span>
+            <span><span id="estimatorCount">0</span> selected</span>
+          </div>
+          <ul class="estimator-list" id="estimatorList">
+            <li class="estimator-empty">No services selected yet — tick a box to see live pricing.</li>
+          </ul>
+          <div class="estimator-total">
+            <span class="label">Estimated total</span>
+            <span class="amount" id="estimatorTotal">£0</span>
+          </div>
+          <a href="book-repair.html" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-arrow-right"></i> Continue to Booking
+          </a>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Error 404 Tech Rescue Agency. All rights reserved.</span>
+        <span>Estimates are indicative — final pricing confirmed after diagnostics.</span>
+        <a href="data-viewer.html" class="footer-data-link"><i class="fa-solid fa-database"></i> View Stored Data</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

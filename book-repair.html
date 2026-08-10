@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Repair — Error 404 Tech Rescue Agency</title>
+  <meta name="description" content="Submit your device details and get an instant repair ticket number." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">404</span>
+        <span class="brand-name">ERROR <span>404</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book-repair.html" class="active">Book Repair</a></li>
+          <li><a href="status.html">Track Status</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark or light mode">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="status.html" class="btn btn-primary">
+          <i class="fa-solid fa-satellite-dish"></i> Track Ticket
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-band">
+      <p class="eyebrow">Intake form</p>
+      <h1>Tell us what's broken.</h1>
+      <p>Fill this out accurately — the more detail in your issue description, the faster our engineers triage on arrival.</p>
+    </div>
+
+    <section class="container">
+      <div class="form-shell">
+
+                <div class="form-card">
+          <div class="form-note">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>All fields marked are required. On submit you'll receive a ticket ID (e.g. <strong>#ERR-4821</strong>) — save it to track your repair.</span>
+          </div>
+
+          <form id="bookRepairForm" novalidate>
+
+            <div class="field-row">
+              <div class="field" data-field="fullName">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Jordan Blake" autocomplete="name">
+                <p class="field-error" role="alert"></p>
+              </div>
+
+              <div class="field" data-field="email">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jordan@email.com" autocomplete="email">
+                <p class="field-error" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field" data-field="phone">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+44 7700 900123" autocomplete="tel">
+                <p class="field-error" role="alert"></p>
+              </div>
+
+              <div class="field" data-field="deviceType">
+                <label for="deviceType">Device Type</label>
+                <select id="deviceType" name="deviceType">
+                  <option value="">Select a device…</option>
+                  <option value="Laptop">Laptop</option>
+                  <option value="Desktop PC">Desktop PC</option>
+                  <option value="Smartphone">Smartphone</option>
+                  <option value="Tablet">Tablet</option>
+                  <option value="Gaming Console">Gaming Console</option>
+                  <option value="Smartwatch">Smartwatch</option>
+                  <option value="Other">Other</option>
+                </select>
+                <p class="field-error" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="deviceModel">Device Model <span class="field-optional">(optional)</span></label>
+              <input type="text" id="deviceModel" name="deviceModel" placeholder="e.g. MacBook Pro 14&quot; 2023">
+            </div>
+
+            <div class="field" data-field="issueDescription">
+              <label for="issueDescription">Describe the Issue</label>
+              <textarea id="issueDescription" name="issueDescription" placeholder="What's happening? When did it start? Any error messages?"></textarea>
+              <p class="field-hint">Minimum 20 characters — the more context, the faster we triage.</p>
+              <p class="field-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label>Which services might apply? <span class="field-optional">(optional)</span></label>
+              <div class="checkbox-group">
+                <label class="service-check">
+                  <input type="checkbox" class="service-checkbox-form" value="screen-repair">
+                  <span class="service-check-text"><strong>Screen Repair</strong></span>
+                </label>
+                <label class="service-check">
+                  <input type="checkbox" class="service-checkbox-form" value="data-recovery">
+                  <span class="service-check-text"><strong>Data Recovery</strong></span>
+                </label>
+                <label class="service-check">
+                  <input type="checkbox" class="service-checkbox-form" value="malware-removal">
+                  <span class="service-check-text"><strong>Virus & Malware Removal</strong></span>
+                </label>
+                <label class="service-check">
+                  <input type="checkbox" class="service-checkbox-form" value="liquid-damage">
+                  <span class="service-check-text"><strong>Liquid Damage Treatment</strong></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Urgency</label>
+              <div class="checkbox-group">
+                <label class="service-check">
+                  <input type="radio" name="urgency" value="standard" checked>
+                  <span class="service-check-text"><strong>Standard</strong> <span>Typical 24–48hr turnaround.</span></span>
+                </label>
+                <label class="service-check">
+                  <input type="radio" name="urgency" value="emergency">
+                  <span class="service-check-text"><strong>Emergency</strong> <span>Same-day priority — +£99 surcharge applies.</span></span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-paper-plane"></i> Submit &amp; Generate Ticket
+            </button>
+          </form>
+        </div>
+
+                <aside class="form-side">
+          <div class="side-card">
+            <h4>What happens next</h4>
+            <ul class="side-steps">
+              <li><span class="num">01</span> Your ticket is generated instantly and stored under your ticket ID.</li>
+              <li><span class="num">02</span> An engineer reviews your issue description within the hour.</li>
+              <li><span class="num">03</span> We diagnose, quote, and confirm before any repair work begins.</li>
+              <li><span class="num">04</span> Track live progress any time on the Status page.</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h4>Need it today?</h4>
+            <p>Select <strong>Emergency</strong> urgency above for same-day priority intake — most devices leave the bench within hours.</p>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Error 404 Tech Rescue Agency. All rights reserved.</span>
+        <span>Your details stay on this device — stored locally, never uploaded.</span>
+        <a href="data-viewer.html" class="footer-data-link"><i class="fa-solid fa-database"></i> View Stored Data</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

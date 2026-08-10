@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Repair Status — Error 404 Tech Rescue Agency</title>
+  <meta name="description" content="Look up your repair ticket and follow live diagnostic progress." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">404</span>
+        <span class="brand-name">ERROR <span>404</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book-repair.html">Book Repair</a></li>
+          <li><a href="status.html" class="active">Track Status</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark or light mode">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="book-repair.html" class="btn btn-primary">
+          <i class="fa-solid fa-bolt"></i> Book a Repair
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-band">
+      <p class="eyebrow">Diagnostics readout</p>
+      <h1>Track your repair ticket.</h1>
+      <p>Your most recent submission loads automatically. Have an older ticket ID? Look it up on the right.</p>
+    </div>
+
+    <section class="container">
+      <div class="tracker-layout">
+
+                <div>
+          <div class="no-ticket" id="noTicket">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <h3>No ticket loaded yet</h3>
+            <p>Submit a repair request or enter a ticket ID on the right to pull up its status.</p>
+            <a href="book-repair.html" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Book a Repair</a>
+          </div>
+
+          <div class="ticket-panel is-hidden" id="ticketPanel">
+            <div class="ticket-topbar">
+              <div class="ticket-dots"><span></span><span></span><span></span></div>
+              <span class="ticket-id">TICKET #<span id="ticketIdOut">—</span></span>
+              <span class="status-badge status-badge-inline">
+                <span class="status-dot"></span> Emergency Online
+              </span>
+            </div>
+
+            <div class="ticket-body">
+              <div class="ticket-line"><span class="k">client_name</span><span class="v" id="ticketNameOut">—</span></div>
+              <div class="ticket-line"><span class="k">email</span><span class="v" id="ticketEmailOut">—</span></div>
+              <div class="ticket-line"><span class="k">phone</span><span class="v" id="ticketPhoneOut">—</span></div>
+              <div class="ticket-line"><span class="k">device</span><span class="v" id="ticketDeviceOut">—</span></div>
+              <div class="ticket-line"><span class="k">urgency</span><span class="v" id="ticketUrgencyOut">—</span></div>
+              <div class="ticket-line"><span class="k">services_flagged</span><span class="v" id="ticketServicesOut">—</span></div>
+              <div class="ticket-line"><span class="k">issue_log</span><span class="v" id="ticketIssueOut">—</span></div>
+              <div class="ticket-line"><span class="k">submitted_at</span><span class="v" id="ticketDateOut">—</span></div>
+
+              <p class="field-hint field-hint-spaced">
+                run diagnostics --ticket<span class="blink-cursor"></span>
+              </p>
+
+              <div class="diagnostic-log" id="diagnosticLog"></div>
+            </div>
+          </div>
+        </div>
+
+                <aside class="lookup-card">
+          <h4 class="estimator-header"><span>Look up a ticket</span></h4>
+          <form id="lookupForm">
+            <div class="field">
+              <label for="lookupInput">Ticket ID</label>
+              <input type="text" id="lookupInput" placeholder="ERR-4821">
+            </div>
+            <button type="submit" class="btn btn-ghost btn-block">
+              <i class="fa-solid fa-magnifying-glass"></i> Find Ticket
+            </button>
+            <p class="field-error lookup-error is-hidden" id="lookupError" role="alert"></p>
+          </form>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Error 404 Tech Rescue Agency. All rights reserved.</span>
+        <span>Ticket data is stored locally on this device only.</span>
+        <a href="data-viewer.html" class="footer-data-link"><i class="fa-solid fa-database"></i> View Stored Data</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
