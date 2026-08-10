@@ -33,7 +33,12 @@ $(function () {
     const current = $root.attr("data-theme") === "light" ? "light" : "dark";
     const next = current === "light" ? "dark" : "light";
     $root.attr("data-theme", next);
-    localStorage.setItem("error404-theme", next);
+    try {
+      localStorage.setItem("error404-theme", next);
+    } catch (e) {
+      console.error("localStorage save failed:", e);
+      alert("Storage error - localStorage may be disabled or full");
+    }
     applyThemeIcon(next);
   });
 
@@ -167,13 +172,18 @@ $(function () {
         status: "received"
       };
 
-      localStorage.setItem("error404-latest-ticket", JSON.stringify(ticket));
+      try {
+        localStorage.setItem("error404-latest-ticket", JSON.stringify(ticket));
 
-      const allTickets = JSON.parse(localStorage.getItem("error404-tickets") || "{}");
-      allTickets[ticket.ticketId] = ticket;
-      localStorage.setItem("error404-tickets", JSON.stringify(allTickets));
+        const allTickets = JSON.parse(localStorage.getItem("error404-tickets") || "{}");
+        allTickets[ticket.ticketId] = ticket;
+        localStorage.setItem("error404-tickets", JSON.stringify(allTickets));
 
-      window.location.href = "status.html?ticket=" + encodeURIComponent(ticket.ticketId);
+        window.location.href = "status.html?ticket=" + encodeURIComponent(ticket.ticketId);
+      } catch (e) {
+        console.error("localStorage save failed:", e);
+        alert("ERROR: Could not save your ticket. Your browser's storage may be disabled or full.\n\nPlease check:\n1. Are you in Private/Incognito mode?\n2. Is localStorage enabled in browser settings?\n3. Do you have storage space available?");
+      }
     });
   }
 
@@ -183,13 +193,23 @@ $(function () {
   if ($ticketPanel.length) {
 
     function getTicketById(id) {
-      const allTickets = JSON.parse(localStorage.getItem("error404-tickets") || "{}");
-      return allTickets[id] || null;
+      try {
+        const allTickets = JSON.parse(localStorage.getItem("error404-tickets") || "{}");
+        return allTickets[id] || null;
+      } catch (e) {
+        console.error("localStorage read failed:", e);
+        return null;
+      }
     }
 
     function getLatestTicket() {
-      const raw = localStorage.getItem("error404-latest-ticket");
-      return raw ? JSON.parse(raw) : null;
+      try {
+        const raw = localStorage.getItem("error404-latest-ticket");
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        console.error("localStorage read failed:", e);
+        return null;
+      }
     }
 
     const STAGES = [
@@ -286,16 +306,20 @@ $(function () {
 
     function renderStorage() {
       STORAGE_KEYS.forEach(({ key, target, empty }) => {
-        const raw = localStorage.getItem(key);
-        const $target = $(target);
-        const $empty = $(empty);
+        try {
+          const raw = localStorage.getItem(key);
+          const $target = $(target);
+          const $empty = $(empty);
 
-        if (raw === null) {
-          $target.hide();
-          $empty.show();
-        } else {
-          $target.text(prettyPrint(raw)).show();
-          $empty.hide();
+          if (raw === null) {
+            $target.hide();
+            $empty.show();
+          } else {
+            $target.text(prettyPrint(raw)).show();
+            $empty.hide();
+          }
+        } catch (e) {
+          console.error("localStorage access failed:", e);
         }
       });
     }
@@ -329,12 +353,17 @@ $(function () {
       );
       if (!confirmed) return;
 
-      STORAGE_KEYS.forEach(({ key }) => localStorage.removeItem(key));
-      renderStorage();
+      try {
+        STORAGE_KEYS.forEach(({ key }) => localStorage.removeItem(key));
+        renderStorage();
 
-      const $toast = $("#clearAllToast");
-      $toast.text("All stored data cleared.").addClass("is-visible");
-      setTimeout(() => $toast.removeClass("is-visible"), 2000);
+        const $toast = $("#clearAllToast");
+        $toast.text("All stored data cleared.").addClass("is-visible");
+        setTimeout(() => $toast.removeClass("is-visible"), 2000);
+      } catch (e) {
+        console.error("localStorage clear failed:", e);
+        alert("Could not clear storage: " + e.message);
+      }
     });
   }
 
